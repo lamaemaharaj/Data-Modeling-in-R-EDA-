@@ -1,0 +1,55 @@
+# The data was extracted from that is in represented as the HRS File was from the website of the Health and Retirement Study. 
+# It dealth with different froms of data including the BMI of many of the individuals who are documented by thei oragnization. 
+# The Data set for this R Script is provided in the same repos. 
+
+#1 Create a histogram of the variable r1bmi in the population to examine its normality
+#2 Create a histogram of the variable r1bmi in the population to examine its normality.
+#3 Calculate the mean of r1bmi this is the population mean since you pretend the HRS sample as a population.
+
+> data.table::data.table(HRS_r1bmi_1_)
+> hist(HRS_r1bmi_1_ $r1bmi, main = "Population based on r1bmi")
+# Create a Q-Q plot to examine the normality of the variable r1bmi.
+> qqnorm(HRS_r1bmi_1_$r1bmi, pch=1, frame= TRUE)
+
+> mean(HRS_r1bmi_1_$r1bmi)
+[1] 27.09804
+
+#Draw 10,000 random samples of size n=2 from the population. 
+
+> iter <- 10000
+> means_n2 <- rep(NA,iter)
+> for( i in 1:iter){
+  d <- sample(HRS_r1bmi_1_$r1bmi, size=2)
+  means_n2[i] <- mean(d)
+}
+> par(mar=rep(2,4))
+> hist(means_n2, main= "Samples, N=2")
+
+> qqnorm(means_n2,pch=1, frame= TRUE)
+> mean(means_n2)
+> means_n10 <- rep(NA,iter)
+> for( i in 1:iter){
+  k <- sample(HRS_r1bmi_1_$r1bmi, size=10)
+  means_n10[i] <-mean(k)
+}
+> hist(means_n10,main = "Samples, N=10")
+> qqnorm(means_n10, pch=1, frame=TRUE)
+> mean(means_n10)
+
+> means_n1000 <- rep(NA,iter)
+> for( i in 1:iter){
+  f <- sample(HRS_r1bmi_1_$r1bmi, size=1000)
+  means_n1000[i] <-mean(f)
+}
+hist(means_n1000, main = "Sample N=1000")
+> qqnorm(means_n1000, pch=1, frame=TRUE)
+> mean(means_n1000)
+
+
+
+ 
+
+
+
+
+
